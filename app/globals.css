@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  /* Principales */
+  --color-white: #ffffff;
+  --color-black: #111111;
+
+  /* Secundarios — arena y piedra */
+  --color-sand-50: #faf8f5;
+  --color-sand-100: #f2eee8;
+  --color-stone-200: #e4dfd8;
+  --color-stone-300: #cfc8bf;
+
+  /* Grises de división y fondo */
+  --color-gray-100: #f5f5f5;
+  --color-gray-300: #dddddd;
+  --color-gray-500: #8a8a8a;
+  --color-gray-700: #444444;
+
+  /* Acento — solo hover, iconos y micro-detalles */
+  --color-accent: #b7a98f;
+
+  --container-max: 1440px;
+
+  --ease-premier: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-montserrat);
+}
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  border-color: var(--color-gray-300);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
