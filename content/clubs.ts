@@ -1,5 +1,12 @@
 export type ClubSlug = "sescorxador" | "avenidas";
 
+export type ClubRenovation = {
+  eyebrow: string;
+  subheading: string;
+  description: string[];
+  teaser: string[];
+};
+
 export type Club = {
   slug: ClubSlug;
   name: string;
@@ -15,6 +22,10 @@ export type Club = {
   whyChoose: string[];
   closing: string;
   addressLines: string[];
+  // Cuando un club está cerrado por reforma, se muestra una landing de
+  // preinscripción en lugar de la ficha completa. Quitar este campo
+  // restaura automáticamente la página completa del club.
+  renovation?: ClubRenovation;
 };
 
 export const CLUBS: Record<ClubSlug, Club> = {
@@ -82,6 +93,22 @@ export const CLUBS: Record<ClubSlug, Club> = {
     closing:
       "Si estás buscando un gimnasio en Palma, un gimnasio en Avenidas, un centro con Pilates en Palma, Yoga en Palma o un gimnasio con tecnología inteligente y seguimiento personalizado, te invitamos a descubrir Premier Gym Avenidas.",
     addressLines: ["{{TBD: dirección completa Avenidas}}"],
+    renovation: {
+      eyebrow: "Próxima apertura",
+      subheading: "Estamos renovando el club para ofrecerte una experiencia premium completa.",
+      description: [
+        "Premier Gym Avenidas está actualmente en reforma. Estamos preparando un espacio más amplio, con nuevas zonas de entrenamiento y tecnología de última generación, pensado tanto para el rendimiento como para el bienestar.",
+        "Cuando abra sus puertas, encontrarás un completo circuito inteligente EGYM, análisis corporal InBody, evaluación BioAge, amplias zonas de fuerza y cardio, una exclusiva Recovery Zone con sauna e ice bath, y una sala polivalente para Pilates, Yoga y actividades dirigidas.",
+      ],
+      teaser: [
+        "Circuito inteligente EGYM.",
+        "Análisis corporal InBody y evaluación BioAge.",
+        "Recovery Zone: sauna + ice bath.",
+        "Sala polivalente para Pilates y Yoga.",
+        "Amplias zonas de fuerza y cardio.",
+        "Aforo controlado y ambiente tranquilo.",
+      ],
+    },
   },
 };
 

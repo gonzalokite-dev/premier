@@ -14,6 +14,7 @@ import ExploreGrid from "@/components/sections/ExploreGrid";
 import FAQAccordion from "@/components/sections/FAQAccordion";
 import ContactForm from "@/components/sections/ContactForm";
 import MembershipCard from "@/components/sections/MembershipCard";
+import ClubRenovationLanding from "@/components/sections/ClubRenovationLanding";
 import { CLUBS, type ClubSlug } from "@/content/clubs";
 import { OPENING_HOURS } from "@/content/contact";
 import { SPACES } from "@/content/spaces";
@@ -38,14 +39,15 @@ export async function generateMetadata({
   const club = CLUBS[slug as ClubSlug];
   if (!club) return {};
 
-  const description = club.intro[0];
-  const image = ogImageUrl(club.name, club.eyebrow);
+  const description = club.renovation ? club.renovation.subheading : club.intro[0];
+  const title = club.renovation ? `${club.name} — Próxima Apertura` : club.name;
+  const image = ogImageUrl(club.name, club.renovation ? club.renovation.eyebrow : club.eyebrow);
   return {
-    title: club.name,
+    title,
     description,
     alternates: { canonical: `/clubes/${club.slug}` },
     openGraph: {
-      title: club.name,
+      title,
       description,
       url: `${SITE_URL}/clubes/${club.slug}`,
       images: [{ url: image, width: 1200, height: 630 }],
@@ -62,6 +64,10 @@ export default async function ClubPage({
   const { slug } = await params;
   const club = CLUBS[slug as ClubSlug];
   if (!club) notFound();
+
+  if (club.renovation) {
+    return <ClubRenovationLanding club={club} />;
+  }
 
   const whyTone = club.slug === "sescorxador" ? "sand" : "black";
   const ctaVariant = club.slug === "sescorxador" ? "dark" : "light";
