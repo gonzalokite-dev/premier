@@ -157,31 +157,6 @@ export default async function ClubPage({
         </Container>
       </Section>
 
-      {/* CTA banner */}
-      <Section tone="black" className="py-20 md:py-28">
-        <Container className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
-          <FadeIn>
-            <Heading as="p" size="md" className="max-w-xl">
-              Ven a conocer {club.name}
-            </Heading>
-          </FadeIn>
-          <FadeIn delay={0.1} className="flex flex-col gap-4 sm:flex-row">
-            <Button href="#membresias" variant="light">
-              Hazte Socio
-            </Button>
-            <Button
-              href={whatsappHref(`Hola, me gustaría más información sobre ${club.name}.`)}
-              external
-              variant="light"
-              className="gap-3"
-            >
-              <WhatsAppIcon className="size-4" />
-              WhatsApp
-            </Button>
-          </FadeIn>
-        </Container>
-      </Section>
-
       {/* Membresías */}
       <Section id="membresias" tone="white">
         <Container>
@@ -310,6 +285,31 @@ export default async function ClubPage({
 
       {/* Ubicación */}
       <LocationBlock addressLines={club.addressLines} mapEmbed={MAPS_EMBED[club.slug]} tone="white" />
+
+      {/* CTA banner */}
+      <Section tone="black" className="py-20 md:py-28">
+        <Container className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
+          <FadeIn>
+            <Heading as="p" size="md" className="max-w-xl">
+              Ven a conocer {club.name}
+            </Heading>
+          </FadeIn>
+          <FadeIn delay={0.1} className="flex flex-col gap-4 sm:flex-row">
+            <Button href="#membresias" variant="light">
+              Hazte Socio
+            </Button>
+            <Button
+              href={whatsappHref(`Hola, me gustaría más información sobre ${club.name}.`)}
+              external
+              variant="light"
+              className="gap-3"
+            >
+              <WhatsAppIcon className="size-4" />
+              WhatsApp
+            </Button>
+          </FadeIn>
+        </Container>
+      </Section>
     </div>
   );
 }
