@@ -142,37 +142,6 @@ export default async function ClubPage({
         </Container>
       </div>
 
-      {/* Conoce el centro */}
-      <Section tone="white">
-        <Container>
-          <FadeIn className="mb-12 max-w-2xl">
-            <Eyebrow>{club.shortName}</Eyebrow>
-            <Heading as="h2" size="lg" className="mt-4">
-              Conoce el Centro
-            </Heading>
-          </FadeIn>
-          <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
-            <div className="flex flex-col gap-6">
-              {club.intro.map((paragraph, i) => (
-                <FadeIn key={i} delay={i * 0.08}>
-                  <p className="max-w-[65ch] text-base font-light leading-relaxed text-gray-700 sm:text-lg">
-                    {paragraph}
-                  </p>
-                </FadeIn>
-              ))}
-            </div>
-            <FadeIn delay={0.1} className="relative aspect-[3/4] w-full">
-              <SmartImage
-                src={club.introImage}
-                alt={club.heroImageAlt}
-                placeholderLabel={club.heroImagePlaceholder}
-                sizes="(min-width: 1024px) 45vw, 100vw"
-              />
-            </FadeIn>
-          </div>
-        </Container>
-      </Section>
-
       {/* Espacios y tecnología */}
       <Section tone="sand">
         <Container>
@@ -185,29 +154,6 @@ export default async function ClubPage({
         </Container>
         <Container className="px-0 sm:px-8 lg:px-16">
           <ExploreGrid spaces={clubSpaces} />
-        </Container>
-      </Section>
-
-      {/* Servicios (por qué elegirnos) */}
-      <Section tone="white">
-        <Container>
-          <FadeIn>
-            <Heading as="h2" size="lg" className="max-w-3xl">
-              {club.whyChooseTitle}
-            </Heading>
-          </FadeIn>
-          <Divider className="my-12" />
-          <IconList items={club.whyChoose} />
-
-          <FadeIn delay={0.1} className="mt-16 max-w-2xl">
-            <p className="text-base font-light leading-relaxed sm:text-lg">{club.closing}</p>
-          </FadeIn>
-
-          <FadeIn delay={0.15} className="mt-12">
-            <Button href="#membresias" variant="dark">
-              Hazte Socio
-            </Button>
-          </FadeIn>
         </Container>
       </Section>
 
@@ -272,8 +218,31 @@ export default async function ClubPage({
         </Container>
       </Section>
 
-      {/* FAQ */}
+      {/* Servicios (por qué elegirnos) */}
       <Section tone="white">
+        <Container>
+          <FadeIn>
+            <Heading as="h2" size="lg" className="max-w-3xl">
+              {club.whyChooseTitle}
+            </Heading>
+          </FadeIn>
+          <Divider className="my-12" />
+          <IconList items={club.whyChoose} />
+
+          <FadeIn delay={0.1} className="mt-16 max-w-2xl">
+            <p className="text-base font-light leading-relaxed sm:text-lg">{club.closing}</p>
+          </FadeIn>
+
+          <FadeIn delay={0.15} className="mt-12">
+            <Button href="#membresias" variant="dark">
+              Hazte Socio
+            </Button>
+          </FadeIn>
+        </Container>
+      </Section>
+
+      {/* FAQ */}
+      <Section tone="sand">
         <Container className="max-w-3xl">
           <FadeIn className="mb-12">
             <Eyebrow>Preguntas Frecuentes</Eyebrow>
@@ -282,6 +251,37 @@ export default async function ClubPage({
             </Heading>
           </FadeIn>
           <FAQAccordion items={faqs} />
+        </Container>
+      </Section>
+
+      {/* Conoce el centro */}
+      <Section tone="white">
+        <Container>
+          <FadeIn className="mb-12 max-w-2xl">
+            <Eyebrow>{club.shortName}</Eyebrow>
+            <Heading as="h2" size="lg" className="mt-4">
+              Conoce el Centro
+            </Heading>
+          </FadeIn>
+          <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
+            <div className="flex flex-col gap-6">
+              {club.intro.map((paragraph, i) => (
+                <FadeIn key={i} delay={i * 0.08}>
+                  <p className="max-w-[65ch] text-base font-light leading-relaxed text-gray-700 sm:text-lg">
+                    {paragraph}
+                  </p>
+                </FadeIn>
+              ))}
+            </div>
+            <FadeIn delay={0.1} className="relative aspect-[3/4] w-full">
+              <SmartImage
+                src={club.introImage}
+                alt={club.heroImageAlt}
+                placeholderLabel={club.heroImagePlaceholder}
+                sizes="(min-width: 1024px) 45vw, 100vw"
+              />
+            </FadeIn>
+          </div>
         </Container>
       </Section>
 
