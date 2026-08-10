@@ -11,7 +11,6 @@ import SmartImage from "@/components/ui/SmartImage";
 import IconList from "@/components/sections/IconList";
 import ExploreGrid from "@/components/sections/ExploreGrid";
 import FAQAccordion from "@/components/sections/FAQAccordion";
-import ContactForm from "@/components/sections/ContactForm";
 import MembershipCard from "@/components/sections/MembershipCard";
 import TemporaryPassList from "@/components/sections/TemporaryPassList";
 import ClubRenovationLanding from "@/components/sections/ClubRenovationLanding";
@@ -193,8 +192,16 @@ export default async function ClubPage({
         </Container>
       </Section>
 
+      {/* Ubicación */}
+      <LocationBlock
+        addressLines={club.addressLines}
+        mapEmbed={MAPS_EMBED[club.slug]}
+        hours={hours}
+        tone="white"
+      />
+
       {/* Servicios (por qué elegirnos) */}
-      <Section tone="white">
+      <Section tone="sand">
         <Container>
           <FadeIn>
             <Heading as="h2" size="lg" className="max-w-3xl">
@@ -217,7 +224,7 @@ export default async function ClubPage({
       </Section>
 
       {/* FAQ */}
-      <Section tone="sand">
+      <Section tone="white">
         <Container className="max-w-3xl">
           <FadeIn className="mb-12">
             <Eyebrow>Preguntas Frecuentes</Eyebrow>
@@ -230,7 +237,7 @@ export default async function ClubPage({
       </Section>
 
       {/* Conoce el centro */}
-      <Section tone="white">
+      <Section tone="sand">
         <Container>
           <FadeIn className="mb-12 max-w-2xl">
             <Eyebrow>{club.shortName}</Eyebrow>
@@ -259,32 +266,6 @@ export default async function ClubPage({
           </div>
         </Container>
       </Section>
-
-      {/* Contacto + Horario */}
-      <Section tone="sand">
-        <Container className="max-w-2xl">
-          <FadeIn className="mb-12 text-center">
-            <Eyebrow>Contacto</Eyebrow>
-            <Heading as="h2" size="lg" className="mt-4">
-              Escríbenos
-            </Heading>
-            <p className="mx-auto mt-6 max-w-[55ch] text-base font-light leading-relaxed text-gray-700">
-              Cuéntanos qué necesitas y te respondemos a la mayor brevedad, o llámanos al{" "}
-              {PHONE_DISPLAY}.
-            </p>
-          </FadeIn>
-          <ContactForm defaultClub={club.slug} />
-
-          <FadeIn delay={0.1} className="mt-16 flex flex-col gap-2 border-t border-gray-300 pt-10 text-sm font-light text-gray-700">
-            <Eyebrow>Horario</Eyebrow>
-            <p className="mt-2">{hours.weekdays}</p>
-            <p>{hours.weekend}</p>
-          </FadeIn>
-        </Container>
-      </Section>
-
-      {/* Ubicación */}
-      <LocationBlock addressLines={club.addressLines} mapEmbed={MAPS_EMBED[club.slug]} tone="white" />
 
       {/* CTA banner */}
       <Section tone="black" className="py-20 md:py-28">

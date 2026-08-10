@@ -5,16 +5,19 @@ import Heading from "@/components/ui/Heading";
 import FadeIn from "@/components/ui/FadeIn";
 import Button from "@/components/ui/Button";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
-import { PinIcon } from "@/components/ui/Icon";
+import { PinIcon, ClockIcon } from "@/components/ui/Icon";
 import { googleMapsDirectionsUrl } from "@/content/site";
+import type { OpeningHours } from "@/content/contact";
 
 export default function LocationBlock({
   addressLines,
   mapEmbed,
+  hours,
   tone = "white",
 }: {
   addressLines: string[];
   mapEmbed: string | null;
+  hours?: OpeningHours;
   tone?: "white" | "sand";
 }) {
   const address = addressLines.join(", ");
@@ -37,6 +40,15 @@ export default function LocationBlock({
               ))}
             </address>
           </div>
+          {hours && (
+            <div className="mt-4 flex items-start gap-3">
+              <ClockIcon className="mt-1 size-4 flex-shrink-0 text-accent" />
+              <p className="text-base font-light leading-relaxed text-gray-700">
+                <span className="block">{hours.weekdays}</span>
+                <span className="block">{hours.weekend}</span>
+              </p>
+            </div>
+          )}
           <Button href={googleMapsDirectionsUrl(address)} external variant="dark" className="mt-8">
             Cómo llegar
           </Button>
