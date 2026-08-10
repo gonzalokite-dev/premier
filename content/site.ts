@@ -8,6 +8,10 @@ export const PHONE_HREF = "tel:+34630863949";
 export const WHATSAPP_NUMBER = "34630863949";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
+// Número dedicado al botón flotante de WhatsApp.
+export const WHATSAPP_FLOAT_NUMBER = "34650587294";
+export const WHATSAPP_FLOAT_URL = `https://wa.me/${WHATSAPP_FLOAT_NUMBER}`;
+
 export const EMAIL = "info@premiergym.es";
 export const EMAIL_HREF = `mailto:${EMAIL}`;
 
