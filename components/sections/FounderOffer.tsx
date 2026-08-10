@@ -23,9 +23,13 @@ export default function FounderOffer({
           <Heading as="h2" size="display" className="mt-4">
             {offer.heading}
           </Heading>
-          <p className="mx-auto mt-8 max-w-[60ch] text-base font-light leading-relaxed text-gray-700 sm:text-lg">
-            {offer.explanation}
-          </p>
+          <div className="mt-8 flex flex-col items-center gap-1">
+            {offer.highlights.map((highlight) => (
+              <p key={highlight} className="text-lg font-normal text-gray-700 sm:text-xl">
+                {highlight}
+              </p>
+            ))}
+          </div>
         </FadeIn>
 
         <FadeIn delay={0.1} className="mt-14 flex items-center justify-center gap-6">
