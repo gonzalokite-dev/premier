@@ -16,20 +16,27 @@ export default function FounderOffer({
   ctaHref: string;
 }) {
   return (
-    <Section tone="sand" className="py-24 md:py-32">
+    <Section tone="black" className="py-24 md:py-32">
       <Container className="mx-auto max-w-3xl text-center">
         <FadeIn>
-          <Eyebrow>{offer.eyebrow}</Eyebrow>
+          <Eyebrow className="text-accent">{offer.eyebrow}</Eyebrow>
           <Heading as="h2" size="display" className="mt-4">
             {offer.heading}
           </Heading>
-          <p className="mx-auto mt-8 max-w-[60ch] text-base font-light leading-relaxed text-gray-700 sm:text-lg">
-            {offer.explanation}
+          <div className="mt-8 flex flex-col items-center gap-1">
+            {offer.highlights.map((highlight) => (
+              <p key={highlight} className="text-lg font-normal text-white sm:text-xl">
+                {highlight}
+              </p>
+            ))}
+          </div>
+          <p className="mx-auto mt-4 max-w-[50ch] text-sm font-light text-white/60">
+            {offer.note}
           </p>
         </FadeIn>
 
         <FadeIn delay={0.1} className="mt-14 flex items-center justify-center gap-6">
-          <span className="text-2xl font-light text-gray-500 line-through">
+          <span className="text-2xl font-light text-white/40 line-through">
             {offer.priceOriginal}
           </span>
           <span className="text-[clamp(3rem,6vw,5rem)] font-extralight leading-none">
@@ -38,16 +45,16 @@ export default function FounderOffer({
         </FadeIn>
 
         <FadeIn delay={0.15}>
-          <p className="mx-auto mt-6 max-w-[55ch] text-sm font-light leading-relaxed text-gray-700">
+          <p className="mx-auto mt-6 max-w-[55ch] text-sm font-light leading-relaxed text-white/70">
             {offer.priceNote}
           </p>
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <Divider className="my-10" />
+          <Divider className="my-10 border-white/20" />
           <ul className="flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-10 sm:gap-y-4">
             {offer.benefits.map((benefit) => (
-              <li key={benefit} className="flex items-center gap-3 text-sm font-light text-gray-700">
+              <li key={benefit} className="flex items-center gap-3 text-sm font-light text-white/85">
                 <CheckIcon className="size-4 flex-shrink-0 text-accent" />
                 {benefit}
               </li>
@@ -56,7 +63,7 @@ export default function FounderOffer({
         </FadeIn>
 
         <FadeIn delay={0.25} className="mt-12">
-          <Button href={ctaHref} external variant="dark" className="px-12 py-5 text-base">
+          <Button href={ctaHref} external variant="light" className="px-12 py-5 text-base">
             {offer.ctaLabel}
           </Button>
         </FadeIn>

@@ -3,7 +3,8 @@ export type ClubSlug = "sescorxador" | "avenidas";
 export type ClubFounderOffer = {
   eyebrow: string;
   heading: string;
-  explanation: string;
+  highlights: string[];
+  note: string;
   priceOriginal: string;
   priceFounder: string;
   priceNote: string;
@@ -126,8 +127,8 @@ export const CLUBS: Record<ClubSlug, Club> = {
       founder: {
         eyebrow: "Condiciones exclusivas pre-apertura",
         heading: "Socio Fundador",
-        explanation:
-          "Al inscribirte antes de la apertura disfrutarás de unas condiciones reservadas para los 200 primeros socios del club. Condiciones únicas e irrepetibles.",
+        highlights: ["200 plazas", "Primer mes gratuito"],
+        note: "Condiciones únicas e irrepetibles.",
         priceOriginal: "89 €/mes",
         priceFounder: "79 €/mes",
         priceNote:
@@ -136,7 +137,6 @@ export const CLUBS: Record<ClubSlug, Club> = {
           "Acceso a los 2 centros Premier Gym.",
           "Sin matrícula.",
           "Sin permanencia.",
-          "200 plazas limitadas.",
         ],
         ctaLabel: "Hazte Socio Fundador",
       },
