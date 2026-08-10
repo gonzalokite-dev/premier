@@ -59,6 +59,9 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
       {/* Socio Fundador */}
       <FounderOffer offer={renovation.founder} ctaHref={SIGNUP_URL_AVENIDAS} />
 
+      {/* Dónde estamos */}
+      <LocationBlock addressLines={club.addressLines} mapEmbed={MAPS_EMBED[club.slug]} tone="sand" />
+
       {/* Descripción + teaser */}
       <Section tone="white">
         <Container className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
@@ -81,7 +84,7 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
       </Section>
 
       {/* Mientras tanto */}
-      <Section tone="black" className="py-20 md:py-28">
+      <Section tone="sand" className="py-20 md:py-28">
         <Container className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
           <FadeIn>
             <Heading as="p" size="md" className="max-w-xl">
@@ -89,7 +92,7 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
             </Heading>
           </FadeIn>
           <FadeIn delay={0.1} className="flex flex-col gap-4 sm:flex-row">
-            <Button href="/clubes/sescorxador" variant="light">
+            <Button href="/clubes/sescorxador" variant="dark">
               Conocer S&apos;Escorxador
             </Button>
             <Button
@@ -97,7 +100,7 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
                 `Hola, quiero más información sobre la apertura de ${club.name}.`
               )}
               external
-              variant="light"
+              variant="dark"
               className="gap-3"
             >
               <WhatsAppIcon className="size-4" />
@@ -106,9 +109,6 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
           </FadeIn>
         </Container>
       </Section>
-
-      {/* Dónde estamos */}
-      <LocationBlock addressLines={club.addressLines} mapEmbed={MAPS_EMBED[club.slug]} tone="white" />
     </div>
   );
 }
