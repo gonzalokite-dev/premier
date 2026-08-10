@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { EMAIL } from "@/content/site";
 
 type ContactPayload = {
   name?: string;
@@ -42,7 +43,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: "Premier Gym <web@premiergym.es>",
-        to: "premiergymsescorxador@gmail.com",
+        to: EMAIL,
         subject: `Nuevo contacto web — ${club || "sin club"}`,
         text: `Nombre: ${name}\nEmail: ${email}\nTeléfono: ${phone ?? "-"}\nClub: ${club || "-"}\n\n${message}`,
       }),

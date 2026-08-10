@@ -7,10 +7,12 @@ import Button from "@/components/ui/Button";
 import FadeIn from "@/components/ui/FadeIn";
 import SmartImage from "@/components/ui/SmartImage";
 import IconList from "@/components/sections/IconList";
-import PreRegisterForm from "@/components/sections/PreRegisterForm";
+import FounderOffer from "@/components/sections/FounderOffer";
+import LocationBlock from "@/components/sections/LocationBlock";
 import { WhatsAppIcon } from "@/components/ui/Icon";
 import type { Club } from "@/content/clubs";
-import { whatsappHref } from "@/content/site";
+import { whatsappHref, SIGNUP_URL_AVENIDAS } from "@/content/site";
+import { MAPS_EMBED } from "@/content/contact";
 import { breadcrumbJsonLd } from "@/lib/seo";
 
 export default function ClubRenovationLanding({ club }: { club: Club }) {
@@ -39,12 +41,13 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
         <Container className="relative pb-16 pt-32 sm:pb-20">
           <FadeIn>
             <Eyebrow className="text-white/80">{renovation.eyebrow}</Eyebrow>
-            <Heading as="h1" size="display" className="mt-4 max-w-4xl">
-              {club.name}
+            <Heading as="h1" size="lg" className="mt-4 max-w-3xl">
+              {renovation.heading}
             </Heading>
             <p className="mt-6 max-w-xl text-base font-light leading-relaxed text-white/85 sm:text-lg">
               {renovation.subheading}
@@ -74,26 +77,11 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
         </Container>
       </Section>
 
-      {/* Preinscripción */}
-      <Section tone="sand">
-        <Container className="max-w-2xl">
-          <FadeIn className="text-center">
-            <Eyebrow>Preinscripción</Eyebrow>
-            <Heading as="h2" size="lg" className="mt-4">
-              Preinscríbete
-            </Heading>
-            <p className="mx-auto mt-6 max-w-[55ch] text-base font-light leading-relaxed text-gray-700">
-              Déjanos tus datos y serás de los primeros en saber cuándo abrimos. Sin compromiso.
-            </p>
-          </FadeIn>
-          <div className="mt-12">
-            <PreRegisterForm club={club.slug} />
-          </div>
-        </Container>
-      </Section>
+      {/* Socio Fundador */}
+      <FounderOffer offer={renovation.founder} ctaHref={SIGNUP_URL_AVENIDAS} />
 
       {/* Mientras tanto */}
-      <Section tone="white" className="py-20 md:py-28">
+      <Section tone="black" className="py-20 md:py-28">
         <Container className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
           <FadeIn>
             <Heading as="p" size="md" className="max-w-xl">
@@ -101,7 +89,7 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
             </Heading>
           </FadeIn>
           <FadeIn delay={0.1} className="flex flex-col gap-4 sm:flex-row">
-            <Button href="/clubes/sescorxador" variant="dark">
+            <Button href="/clubes/sescorxador" variant="light">
               Conocer S&apos;Escorxador
             </Button>
             <Button
@@ -109,7 +97,7 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
                 `Hola, quiero más información sobre la apertura de ${club.name}.`
               )}
               external
-              variant="dark"
+              variant="light"
               className="gap-3"
             >
               <WhatsAppIcon className="size-4" />
@@ -118,6 +106,9 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
           </FadeIn>
         </Container>
       </Section>
+
+      {/* Dónde estamos */}
+      <LocationBlock addressLines={club.addressLines} mapEmbed={MAPS_EMBED[club.slug]} tone="white" />
     </div>
   );
 }

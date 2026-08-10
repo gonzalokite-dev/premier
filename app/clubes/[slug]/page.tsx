@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -14,12 +13,14 @@ import ExploreGrid from "@/components/sections/ExploreGrid";
 import FAQAccordion from "@/components/sections/FAQAccordion";
 import ContactForm from "@/components/sections/ContactForm";
 import MembershipCard from "@/components/sections/MembershipCard";
+import TemporaryPassList from "@/components/sections/TemporaryPassList";
 import ClubRenovationLanding from "@/components/sections/ClubRenovationLanding";
+import LocationBlock from "@/components/sections/LocationBlock";
 import { CLUBS, type ClubSlug } from "@/content/clubs";
-import { OPENING_HOURS } from "@/content/contact";
+import { OPENING_HOURS, MAPS_EMBED } from "@/content/contact";
 import { SPACES } from "@/content/spaces";
 import { FAQS } from "@/content/faq";
-import { MEMBERSHIPS } from "@/content/memberships";
+import { MEMBERSHIPS, TEMPORARY_PASSES } from "@/content/memberships";
 import { PHONE_DISPLAY, SITE_URL, whatsappHref } from "@/content/site";
 import { breadcrumbJsonLd, ogImageUrl } from "@/lib/seo";
 import { WhatsAppIcon } from "@/components/ui/Icon";
@@ -69,13 +70,10 @@ export default async function ClubPage({
     return <ClubRenovationLanding club={club} />;
   }
 
-  const whyTone = club.slug === "sescorxador" ? "sand" : "black";
-  const ctaVariant = club.slug === "sescorxador" ? "dark" : "light";
-  const faqTone = whyTone === "sand" ? "white" : "sand";
-  const contactTone = whyTone === "sand" ? "sand" : "white";
   const hours = OPENING_HOURS[club.slug];
   const faqs = FAQS[club.slug];
   const memberships = MEMBERSHIPS[club.slug];
+  const passes = TEMPORARY_PASSES[club.slug];
   const clubSpaces = SPACES.filter((space) => !space.avenidasOnly || club.slug === "avenidas");
 
   const jsonLd = {
@@ -144,45 +142,72 @@ export default async function ClubPage({
         </Container>
       </div>
 
-      {/* Precios */}
-      <Section id="membresias" tone="white">
+      {/* Conoce el centro */}
+      <Section tone="white">
         <Container>
-          <FadeIn className="mx-auto max-w-2xl text-center">
-            <Eyebrow>Membresías</Eyebrow>
+          <FadeIn className="mb-12 max-w-2xl">
+            <Eyebrow>{club.shortName}</Eyebrow>
             <Heading as="h2" size="lg" className="mt-4">
-              Precios y Planes
+              Conoce el Centro
             </Heading>
           </FadeIn>
-
-          <div className="mt-16 grid gap-8 lg:grid-cols-2">
-            {memberships.map((m) => (
-              <MembershipCard key={m.id} membership={m} club={club} />
-            ))}
+          <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
+            <div className="flex flex-col gap-6">
+              {club.intro.map((paragraph, i) => (
+                <FadeIn key={i} delay={i * 0.08}>
+                  <p className="max-w-[65ch] text-base font-light leading-relaxed text-gray-700 sm:text-lg">
+                    {paragraph}
+                  </p>
+                </FadeIn>
+              ))}
+            </div>
+            <FadeIn delay={0.1} className="relative aspect-[3/4] w-full">
+              <SmartImage
+                src={club.introImage}
+                alt={club.heroImageAlt}
+                placeholderLabel={club.heroImagePlaceholder}
+                sizes="(min-width: 1024px) 45vw, 100vw"
+              />
+            </FadeIn>
           </div>
-
-          <FadeIn delay={0.1} className="mt-10 text-center">
-            <Link
-              href={`/hazte-socio/${club.slug}`}
-              className="text-sm font-medium uppercase tracking-[0.15em] underline underline-offset-4"
-            >
-              Ver accesos temporales (Day Pass, Week Pass, 15 Day Pass)
-            </Link>
-          </FadeIn>
         </Container>
       </Section>
 
-      {/* Conoce el centro */}
+      {/* Espacios y tecnología */}
       <Section tone="sand">
         <Container>
           <FadeIn className="mb-12 max-w-2xl">
             <Eyebrow>Instalaciones</Eyebrow>
             <Heading as="h2" size="lg" className="mt-4">
-              Conoce el Centro
+              Espacios y Tecnología
             </Heading>
           </FadeIn>
         </Container>
         <Container className="px-0 sm:px-8 lg:px-16">
           <ExploreGrid spaces={clubSpaces} />
+        </Container>
+      </Section>
+
+      {/* Servicios (por qué elegirnos) */}
+      <Section tone="white">
+        <Container>
+          <FadeIn>
+            <Heading as="h2" size="lg" className="max-w-3xl">
+              {club.whyChooseTitle}
+            </Heading>
+          </FadeIn>
+          <Divider className="my-12" />
+          <IconList items={club.whyChoose} />
+
+          <FadeIn delay={0.1} className="mt-16 max-w-2xl">
+            <p className="text-base font-light leading-relaxed sm:text-lg">{club.closing}</p>
+          </FadeIn>
+
+          <FadeIn delay={0.15} className="mt-12">
+            <Button href="#membresias" variant="dark">
+              Hazte Socio
+            </Button>
+          </FadeIn>
         </Container>
       </Section>
 
@@ -211,54 +236,44 @@ export default async function ClubPage({
         </Container>
       </Section>
 
-      {/* Intro */}
-      <Section tone="white">
-        <Container className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
-          <div className="flex flex-col gap-6">
-            {club.intro.map((paragraph, i) => (
-              <FadeIn key={i} delay={i * 0.08}>
-                <p className="max-w-[65ch] text-base font-light leading-relaxed text-gray-700 sm:text-lg">
-                  {paragraph}
-                </p>
-              </FadeIn>
+      {/* Membresías */}
+      <Section id="membresias" tone="white">
+        <Container>
+          <FadeIn className="mx-auto max-w-2xl text-center">
+            <Eyebrow>Membresías</Eyebrow>
+            <Heading as="h2" size="lg" className="mt-4">
+              Precios y Planes
+            </Heading>
+          </FadeIn>
+
+          <div className="mt-16 grid gap-8 lg:grid-cols-2">
+            {memberships.map((m) => (
+              <MembershipCard key={m.id} membership={m} club={club} />
             ))}
           </div>
-          <FadeIn delay={0.1} className="relative aspect-[3/4] w-full">
-            <SmartImage
-              src={club.introImage}
-              alt={club.heroImageAlt}
-              placeholderLabel={club.heroImagePlaceholder}
-              sizes="(min-width: 1024px) 45vw, 100vw"
-            />
-          </FadeIn>
         </Container>
       </Section>
 
-      {/* Why choose */}
-      <Section tone={whyTone}>
+      {/* Accesos temporales */}
+      <Section tone="sand" className="pt-0">
         <Container>
-          <FadeIn>
-            <Heading as="h2" size="lg" className="max-w-3xl">
-              {club.whyChooseTitle}
+          <FadeIn className="mx-auto max-w-2xl text-center">
+            <Eyebrow>¿Solo unos días en Palma?</Eyebrow>
+            <Heading as="h3" size="md" className="mt-4">
+              Accesos Temporales
             </Heading>
+            <p className="mx-auto mt-6 max-w-[55ch] text-base font-light leading-relaxed text-gray-700">
+              Entrena en Premier Gym durante tu estancia en Palma, sin necesidad de hacerte socio.
+            </p>
           </FadeIn>
-          <Divider className={`my-12 ${whyTone === "black" ? "border-white/20" : ""}`} />
-          <IconList items={club.whyChoose} />
-
-          <FadeIn delay={0.1} className="mt-16 max-w-2xl">
-            <p className="text-base font-light leading-relaxed sm:text-lg">{club.closing}</p>
-          </FadeIn>
-
-          <FadeIn delay={0.15} className="mt-12">
-            <Button href="#membresias" variant={ctaVariant}>
-              Hazte Socio
-            </Button>
-          </FadeIn>
+          <div className="mt-12">
+            <TemporaryPassList passes={passes} club={club} />
+          </div>
         </Container>
       </Section>
 
       {/* FAQ */}
-      <Section tone={faqTone}>
+      <Section tone="white">
         <Container className="max-w-3xl">
           <FadeIn className="mb-12">
             <Eyebrow>Preguntas Frecuentes</Eyebrow>
@@ -271,7 +286,7 @@ export default async function ClubPage({
       </Section>
 
       {/* Contacto + Horario */}
-      <Section tone={contactTone}>
+      <Section tone="sand">
         <Container className="max-w-2xl">
           <FadeIn className="mb-12 text-center">
             <Eyebrow>Contacto</Eyebrow>
@@ -292,6 +307,9 @@ export default async function ClubPage({
           </FadeIn>
         </Container>
       </Section>
+
+      {/* Ubicación */}
+      <LocationBlock addressLines={club.addressLines} mapEmbed={MAPS_EMBED[club.slug]} tone="white" />
     </div>
   );
 }

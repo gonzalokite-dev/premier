@@ -1,10 +1,23 @@
 export type ClubSlug = "sescorxador" | "avenidas";
 
+export type ClubFounderOffer = {
+  eyebrow: string;
+  heading: string;
+  explanation: string;
+  priceOriginal: string;
+  priceFounder: string;
+  priceNote: string;
+  benefits: string[];
+  ctaLabel: string;
+};
+
 export type ClubRenovation = {
   eyebrow: string;
+  heading: string;
   subheading: string;
   description: string[];
   teaser: string[];
+  founder: ClubFounderOffer;
 };
 
 export type Club = {
@@ -66,8 +79,8 @@ export const CLUBS: Record<ClubSlug, Club> = {
     name: "Premier Gym Avenidas",
     shortName: "Avenidas",
     eyebrow: "Palma de Mallorca",
-    heroImage: null,
-    heroImageAlt: "Interior del gimnasio premium Premier Gym Avenidas en Palma de Mallorca",
+    heroImage: "/assets/images/avenidas/hero.jpg",
+    heroImageAlt: "Interior de Premier Gym Avenidas, gimnasio premium en Palma de Mallorca",
     heroImagePlaceholder: "{{TBD: fotografía Avenidas}}",
     introImage: null,
     tileImage: null,
@@ -92,10 +105,12 @@ export const CLUBS: Record<ClubSlug, Club> = {
     ],
     closing:
       "Si estás buscando un gimnasio en Palma, un gimnasio en Avenidas, un centro con Pilates en Palma, Yoga en Palma o un gimnasio con tecnología inteligente y seguimiento personalizado, te invitamos a descubrir Premier Gym Avenidas.",
-    addressLines: ["{{TBD: dirección completa Avenidas}}"],
+    addressLines: ["Av. del Gran i General Consell, 5", "Palma de Mallorca"],
     renovation: {
       eyebrow: "Próxima apertura",
-      subheading: "Estamos renovando el club para ofrecerte una experiencia premium completa.",
+      heading: "El gimnasio de los cuadrados llega a Avenidas",
+      subheading:
+        "Un espacio pensado para entrenar con tranquilidad, sin aglomeraciones y con una experiencia fitness de alta calidad.",
       description: [
         "Premier Gym Avenidas está actualmente en reforma. Estamos preparando un espacio más amplio, con nuevas zonas de entrenamiento y tecnología de última generación, pensado tanto para el rendimiento como para el bienestar.",
         "Cuando abra sus puertas, encontrarás un completo circuito inteligente EGYM, análisis corporal InBody, evaluación BioAge, amplias zonas de fuerza y cardio, una exclusiva Recovery Zone con sauna e ice bath, y una sala polivalente para Pilates, Yoga y actividades dirigidas.",
@@ -108,6 +123,23 @@ export const CLUBS: Record<ClubSlug, Club> = {
         "Amplias zonas de fuerza y cardio.",
         "Aforo controlado y ambiente tranquilo.",
       ],
+      founder: {
+        eyebrow: "Condiciones exclusivas pre-apertura",
+        heading: "Socio Fundador",
+        explanation:
+          "Al inscribirte antes de la apertura disfrutarás de unas condiciones reservadas para los 200 primeros socios del club. Condiciones únicas e irrepetibles.",
+        priceOriginal: "89 €/mes",
+        priceFounder: "79 €/mes",
+        priceNote:
+          "Precio exclusivo antes de la apertura. Mantén tu tarifa de Socio Fundador y disfruta de:",
+        benefits: [
+          "Acceso a los 2 centros Premier Gym.",
+          "Sin matrícula.",
+          "Sin permanencia.",
+          "200 plazas limitadas.",
+        ],
+        ctaLabel: "Hazte Socio Fundador",
+      },
     },
   },
 };

@@ -17,9 +17,10 @@ export const OPENING_HOURS: Record<ClubSlug, OpeningHours> = {
   },
 };
 
+const AVENIDAS_ADDRESS = "Av. del Gran i General Consell, 5, Palma de Mallorca";
+
 export const MAPS_EMBED: Record<ClubSlug, string | null> = {
   sescorxador:
     "https://www.google.com/maps?q=Carrer+Germans+Garc%C3%ADa+Pe%C3%B1aranda+1A+07010+Palma+de+Mallorca&output=embed",
-  // {{TBD: dirección completa Avenidas}}
-  avenidas: null,
+  avenidas: `https://www.google.com/maps?q=${encodeURIComponent(AVENIDAS_ADDRESS)}&output=embed`,
 };
