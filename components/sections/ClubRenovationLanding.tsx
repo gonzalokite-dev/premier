@@ -56,6 +56,9 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
         </Container>
       </div>
 
+      {/* Socio Fundador */}
+      <FounderOffer offer={renovation.founder} ctaHref={SIGNUP_URL_AVENIDAS} />
+
       {/* Descripción + teaser */}
       <Section tone="white">
         <Container className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
@@ -76,9 +79,6 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
           </FadeIn>
         </Container>
       </Section>
-
-      {/* Socio Fundador */}
-      <FounderOffer offer={renovation.founder} ctaHref={SIGNUP_URL_AVENIDAS} />
 
       {/* Mientras tanto */}
       <Section tone="black" className="py-20 md:py-28">
