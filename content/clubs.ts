@@ -120,7 +120,6 @@ export const CLUBS: Record<ClubSlug, Club> = {
         "Circuito inteligente EGYM.",
         "Análisis corporal InBody y evaluación BioAge.",
         "Recovery Zone: sauna + ice bath.",
-        "Sala polivalente para Pilates y Yoga.",
         "Amplias zonas de fuerza y cardio.",
         "Aforo controlado y ambiente tranquilo.",
       ],
