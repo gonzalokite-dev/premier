@@ -1,10 +1,10 @@
 import { WhatsAppBrandIcon } from "@/components/ui/Icon";
-import { WHATSAPP_FLOAT_URL } from "@/content/site";
+import { WHATSAPP_URL } from "@/content/site";
 
 export default function WhatsAppButton() {
   return (
     <a
-      href={WHATSAPP_FLOAT_URL}
+      href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"
