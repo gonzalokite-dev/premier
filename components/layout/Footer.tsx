@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
-import { PhoneIcon, MailIcon, WhatsAppIcon, InstagramIcon } from "@/components/ui/Icon";
+import { PhoneIcon, MailIcon, WhatsAppBrandIcon, InstagramIcon } from "@/components/ui/Icon";
 import { NAV_ITEMS, FOOTER_LEGAL_LINKS } from "@/content/nav";
 import { CLUB_LIST } from "@/content/clubs";
 import { OPENING_HOURS } from "@/content/contact";
@@ -74,7 +74,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 hover:text-white/70"
               >
-                <WhatsAppIcon className="size-4" />
+                <WhatsAppBrandIcon className="size-4" />
                 WhatsApp
               </a>
             </li>

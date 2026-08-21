@@ -30,15 +30,6 @@ export function CloseIcon({ className = "size-6" }: IconProps) {
   );
 }
 
-export function WhatsAppIcon({ className = "size-6" }: IconProps) {
-  return (
-    <svg {...base} className={className} aria-hidden="true">
-      <path d="M7 17.5 3.5 21l1.13-3.87A8.5 8.5 0 1 1 7 17.5Z" />
-      <path d="M8.5 9.5c0 3.5 2.5 6 6 6 .3 0 .6-.4.6-.9l-.2-1.4a.7.7 0 0 0-.5-.6l-1.6-.5a.7.7 0 0 0-.7.2l-.5.6a5 5 0 0 1-2.1-2.1l.6-.5a.7.7 0 0 0 .2-.7l-.5-1.6a.7.7 0 0 0-.6-.5L7.9 7.4c-.5 0-.9.3-.9.6" />
-    </svg>
-  );
-}
-
 // Icono oficial de WhatsApp (glifo de marca, relleno).
 export function WhatsAppBrandIcon({ className = "size-6" }: IconProps) {
   return (

@@ -10,7 +10,7 @@ export type Membership = {
 };
 
 export type TemporaryPass = {
-  id: "day" | "week" | "15day";
+  id: "day" | "week" | "15day" | "bono5";
   title: string;
   text: string;
   price: number;
@@ -28,6 +28,10 @@ const TEMP_PASS_COPY: Record<TemporaryPass["id"], { title: string; text: string 
   "15day": {
     title: "15 Day Pass",
     text: "Disfruta de acceso ilimitado durante 15 días y vive la experiencia Premier Gym con total flexibilidad. Ideal para estancias más largas o para quienes quieren entrenar antes de decidirse por una membresía.",
+  },
+  bono5: {
+    title: "Bono 5 Usos",
+    text: "Disfruta de 5 accesos a Premier Gym con total flexibilidad. Ideal para estancias más largas o para quienes quieren conocer y disfrutar de nuestras instalaciones antes de decidirse por una membresía. Validez: 3 meses desde la fecha de inicio.",
   },
 };
 
@@ -97,6 +101,7 @@ export const MEMBERSHIPS: Record<ClubSlug, Membership[]> = {
 export const TEMPORARY_PASSES: Record<ClubSlug, TemporaryPass[]> = {
   sescorxador: [
     { id: "day", price: 20, ...TEMP_PASS_COPY.day },
+    { id: "bono5", price: 30, ...TEMP_PASS_COPY.bono5 },
     { id: "week", price: 35, ...TEMP_PASS_COPY.week },
     { id: "15day", price: 50, ...TEMP_PASS_COPY["15day"] },
   ],

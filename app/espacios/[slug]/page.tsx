@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import ZoneSection from "@/components/sections/ZoneSection";
+import ZoneGallery from "@/components/sections/ZoneGallery";
 import { SPACES } from "@/content/spaces";
 import { SITE_URL } from "@/content/site";
 import { breadcrumbJsonLd, ogImageUrl } from "@/lib/seo";
@@ -55,6 +56,7 @@ export default async function SpacePage({
     <div className="pt-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ZoneSection space={space} />
+      {space.gallery && <ZoneGallery images={space.gallery} title={space.title} />}
       <Section tone="sand" className="py-16 md:py-20">
         <Container>
           <Link

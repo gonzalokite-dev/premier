@@ -7,7 +7,7 @@ import Divider from "@/components/ui/Divider";
 import FadeIn from "@/components/ui/FadeIn";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import ContactForm from "@/components/sections/ContactForm";
-import { PhoneIcon, MailIcon, WhatsAppIcon, PinIcon, ClockIcon } from "@/components/ui/Icon";
+import { PhoneIcon, MailIcon, WhatsAppBrandIcon, PinIcon, ClockIcon } from "@/components/ui/Icon";
 import { CLUB_LIST } from "@/content/clubs";
 import { OPENING_HOURS, MAPS_EMBED } from "@/content/contact";
 import {
@@ -57,7 +57,7 @@ export default function ContactoPage() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 border border-black px-8 py-6 text-sm font-medium uppercase tracking-[0.15em] transition-colors duration-300 hover:bg-black hover:text-white"
                 >
-                  <WhatsAppIcon className="size-5" />
+                  <WhatsAppBrandIcon className="size-5" />
                   Escríbenos por WhatsApp
                 </a>
               </FadeIn>
@@ -95,7 +95,7 @@ export default function ContactoPage() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-3 hover:text-black"
                     >
-                      <WhatsAppIcon className="size-4 text-accent" /> WhatsApp
+                      <WhatsAppBrandIcon className="size-4 text-accent" /> WhatsApp
                     </a>
                   </li>
                   <li>

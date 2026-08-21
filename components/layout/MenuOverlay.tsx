@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import Container from "@/components/ui/Container";
-import { CloseIcon, WhatsAppIcon, PhoneIcon, MailIcon, InstagramIcon } from "@/components/ui/Icon";
+import { CloseIcon, WhatsAppBrandIcon, PhoneIcon, MailIcon, InstagramIcon } from "@/components/ui/Icon";
 import { NAV_ITEMS } from "@/content/nav";
 import {
   EMAIL,
@@ -108,7 +108,7 @@ export default function MenuOverlay({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 hover:text-white"
               >
-                <WhatsAppIcon className="size-4" /> WhatsApp
+                <WhatsAppBrandIcon className="size-4" /> WhatsApp
               </a>
               <a href={EMAIL_HREF} className="inline-flex items-center gap-2 hover:text-white">
                 <MailIcon className="size-4" /> {EMAIL}

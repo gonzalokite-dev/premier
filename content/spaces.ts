@@ -1,45 +1,146 @@
+export type SpaceImage = {
+  src: string;
+  alt: string;
+};
+
 export type Space = {
-  slug: "egym" | "cardio" | "discos-y-placas" | "peso-libre" | "recovery";
+  slug: "egym" | "cardio" | "discos-y-placas" | "peso-libre" | "vestuarios" | "recovery";
   title: string;
   text: string;
   image: string | null;
   imageAlt: string;
   imagePlaceholder: string;
+  // Galería de la zona, visible al entrar en /espacios/[slug]. La imagen
+  // principal de arriba no se repite aquí.
+  gallery?: SpaceImage[];
   avenidasOnly?: boolean;
 };
+
+const SESCORXADOR = "/assets/images/sescorxador";
 
 export const SPACES: Space[] = [
   {
     slug: "egym",
     title: "Zona EGYM",
     text: "La Zona EGYM de Premier Gym combina innovación y entrenamiento inteligente. Cada máquina se ajusta automáticamente a tus necesidades para que entrenes mejor, progreses más rápido y disfrutes de una experiencia única en uno de los pocos gimnasios con EGYM en Palma de Mallorca.",
-    image: "/assets/images/sescorxador/egym.jpg",
-    imageAlt: "Circuito inteligente EGYM en Premier Gym S'Escorxador, Palma de Mallorca",
+    image: `${SESCORXADOR}/egym/zona-exclusiva-egym-tecnologia-salud.webp`,
+    imageAlt:
+      "Zona exclusiva EGYM de entrenamiento inteligente en Premier Gym S'Escorxador, Palma de Mallorca",
     imagePlaceholder: "{{TBD: fotografía zona EGYM}}",
+    gallery: [
+      {
+        src: `${SESCORXADOR}/egym/maquinas-egym-premier.webp`,
+        alt: "Máquinas del circuito inteligente EGYM en Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/egym/inbody-egym-tecnologia-gimnasio.webp`,
+        alt: "Análisis corporal InBody en la zona EGYM de Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/egym/control-salud-egym-gimnasio.webp`,
+        alt: "Control de salud y seguimiento con tecnología EGYM en Premier Gym S'Escorxador",
+      },
+    ],
   },
   {
     slug: "cardio",
     title: "Zona Cardio",
     text: "Nuestra Zona Cardio cuenta con equipamiento de última generación para que disfrutes de una experiencia cómoda, eficiente y motivadora. Cintas de correr, bicicletas, elípticas y mucho más en un espacio diseñado para mejorar tu resistencia, cuidar tu salud cardiovascular y alcanzar tus objetivos en uno de los gimnasios premium de Palma.",
-    image: "/assets/images/sescorxador/cardio.jpg",
+    image: `${SESCORXADOR}/cardio.jpg`,
     imageAlt: "Zona de cardio con cintas de correr en Premier Gym S'Escorxador, Palma",
     imagePlaceholder: "{{TBD: fotografía zona cardio}}",
+    gallery: [
+      {
+        src: `${SESCORXADOR}/cardio/maquinas-de-correr-en-premier-gym.webp`,
+        alt: "Cintas de correr en la zona de cardio de Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/cardio/zona-cardio-premier-gym.webp`,
+        alt: "Zona de cardio con bicicletas y elípticas en Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/cardio/gym-tecnologia-cardio-premier.webp`,
+        alt: "Equipamiento de cardio de última generación en Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/cardio/zona-exclusiva-cardio-gym-premier.webp`,
+        alt: "Espacio exclusivo de entrenamiento cardiovascular en Premier Gym S'Escorxador",
+      },
+    ],
   },
   {
     slug: "discos-y-placas",
-    title: "Zona Discos y Placas",
+    title: "Zona Máquinas y Discos",
     text: "Entrena con una amplia selección de máquinas de discos y placas diseñadas para trabajar cada grupo muscular con máxima precisión, estabilidad y comodidad. Equipamiento de última generación para disfrutar de un entrenamiento de fuerza seguro y eficaz en Premier Gym.",
-    image: "/assets/images/sescorxador/discos-placas.jpg",
+    image: `${SESCORXADOR}/discos-placas.jpg`,
     imageAlt: "Máquinas de discos y placas en Premier Gym S'Escorxador, Palma de Mallorca",
     imagePlaceholder: "{{TBD: fotografía zona discos y placas}}",
+    gallery: [
+      {
+        src: `${SESCORXADOR}/musculacion/vista-poleas-maquinas-premier-gym.webp`,
+        alt: "Torres de poleas y máquinas de placas en Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/musculacion/peso-libre-y-musculacion-premier.webp`,
+        alt: "Máquinas de discos y prensa de piernas en Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/musculacion/tonificacion-y-musculacion-gimnasio-premier.webp`,
+        alt: "Máquinas selectorizadas en la sala de musculación de Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/musculacion/tonificacion-maquinas-tecnologia-premier.webp`,
+        alt: "Máquinas selectorizadas Matrix para tonificación en Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/musculacion/acceso-maquinas-premier-musculacion.webp`,
+        alt: "Acceso a la sala de máquinas de Premier Gym S'Escorxador",
+      },
+    ],
   },
   {
     slug: "peso-libre",
     title: "Zona Peso Libre",
     text: "Nuestra Zona de Peso Libre está equipada con racks, bancos, barras y mancuernas para que puedas entrenar con total libertad. Un espacio amplio y diseñado para desarrollar fuerza, ganar masa muscular y llevar tu entrenamiento al máximo nivel en Premier Gym Palma.",
-    image: "/assets/images/sescorxador/peso-libre.jpg",
+    image: `${SESCORXADOR}/peso-libre.jpg`,
     imageAlt: "Zona de peso libre con racks y mancuernas en Premier Gym S'Escorxador, Palma",
     imagePlaceholder: "{{TBD: fotografía zona peso libre}}",
+    gallery: [
+      {
+        src: `${SESCORXADOR}/musculacion/zona-peso-libre-en-premier-gym.webp`,
+        alt: "Zona de peso libre con racks y juego completo de mancuernas en Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/musculacion/sala-musculacion-premier-gym.webp`,
+        alt: "Sala de peso libre con racks, mancuernas y bancos en Premier Gym S'Escorxador",
+      },
+    ],
+  },
+  {
+    slug: "vestuarios",
+    title: "Zona Vestuarios",
+    text: "Nuestros vestuarios están pensados para que llegar y marcharte del gimnasio sea tan cómodo como el propio entrenamiento. Taquillas amplias, duchas, zona de cambiador accesible y un mantenimiento diario que cuida cada detalle. Un espacio limpio, ordenado y con la privacidad necesaria para que puedas venir a entrenar directamente desde el trabajo y seguir con tu día sin complicaciones.",
+    image: `${SESCORXADOR}/taquillas-vestuario/gimnasio-moderno-vestuarios-premier.webp`,
+    imageAlt: "Vestuarios modernos de Premier Gym S'Escorxador, Palma de Mallorca",
+    imagePlaceholder: "{{TBD: fotografía vestuarios}}",
+    gallery: [
+      {
+        src: `${SESCORXADOR}/taquillas-vestuario/acceso-taquillas-premier-gym.webp`,
+        alt: "Acceso a la zona de taquillas de Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/taquillas-vestuario/duchas-y-vestuario-premier.webp`,
+        alt: "Duchas del vestuario de Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/taquillas-vestuario/cambiador-accesible-comodo-premier-gym.webp`,
+        alt: "Vestuario amplio y accesible en Premier Gym S'Escorxador",
+      },
+      {
+        src: `${SESCORXADOR}/taquillas-vestuario/zona-banos-vestuario-gimnasio-premier.webp`,
+        alt: "Zona de baños y vestuario de Premier Gym S'Escorxador",
+      },
+    ],
   },
   {
     slug: "recovery",

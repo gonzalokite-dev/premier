@@ -22,7 +22,7 @@ import { FAQS } from "@/content/faq";
 import { MEMBERSHIPS, TEMPORARY_PASSES } from "@/content/memberships";
 import { PHONE_DISPLAY, SITE_URL, whatsappHref } from "@/content/site";
 import { breadcrumbJsonLd, ogImageUrl } from "@/lib/seo";
-import { WhatsAppIcon } from "@/components/ui/Icon";
+import { WhatsAppBrandIcon } from "@/components/ui/Icon";
 
 const SLUGS: ClubSlug[] = ["sescorxador", "avenidas"];
 
@@ -285,7 +285,7 @@ export default async function ClubPage({
               variant="light"
               className="gap-3"
             >
-              <WhatsAppIcon className="size-4" />
+              <WhatsAppBrandIcon className="size-4" />
               WhatsApp
             </Button>
           </FadeIn>

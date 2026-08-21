@@ -9,7 +9,7 @@ import SmartImage from "@/components/ui/SmartImage";
 import IconList from "@/components/sections/IconList";
 import FounderOffer from "@/components/sections/FounderOffer";
 import LocationBlock from "@/components/sections/LocationBlock";
-import { WhatsAppIcon } from "@/components/ui/Icon";
+import { WhatsAppBrandIcon } from "@/components/ui/Icon";
 import type { Club } from "@/content/clubs";
 import { whatsappHref, SIGNUP_URL_AVENIDAS } from "@/content/site";
 import { MAPS_EMBED } from "@/content/contact";
@@ -103,7 +103,7 @@ export default function ClubRenovationLanding({ club }: { club: Club }) {
               variant="dark"
               className="gap-3"
             >
-              <WhatsAppIcon className="size-4" />
+              <WhatsAppBrandIcon className="size-4" />
               WhatsApp
             </Button>
           </FadeIn>

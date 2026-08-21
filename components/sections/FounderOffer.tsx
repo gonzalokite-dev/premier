@@ -30,9 +30,11 @@ export default function FounderOffer({
               </p>
             ))}
           </div>
-          <p className="mx-auto mt-4 max-w-[50ch] text-sm font-light text-white/60">
-            {offer.note}
-          </p>
+          {offer.note && (
+            <p className="mx-auto mt-4 max-w-[50ch] text-sm font-light text-white/60">
+              {offer.note}
+            </p>
+          )}
         </FadeIn>
 
         <FadeIn delay={0.1} className="mt-14 flex items-center justify-center gap-6">

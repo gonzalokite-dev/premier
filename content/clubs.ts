@@ -4,7 +4,8 @@ export type ClubFounderOffer = {
   eyebrow: string;
   heading: string;
   highlights: string[];
-  note: string;
+  // Línea opcional bajo los ganchos. Si se omite, no se renderiza.
+  note?: string;
   priceOriginal: string;
   priceFounder: string;
   priceNote: string;
@@ -124,19 +125,14 @@ export const CLUBS: Record<ClubSlug, Club> = {
         "Aforo controlado y ambiente tranquilo.",
       ],
       founder: {
-        eyebrow: "Condiciones exclusivas pre-apertura",
+        eyebrow: "Oferta de lanzamiento",
         heading: "Socio Fundador",
-        highlights: ["200 plazas", "Primer mes gratuito"],
-        note: "Condiciones únicas e irrepetibles.",
+        highlights: ["Solo 200 plazas", "Primer mes gratuito"],
         priceOriginal: "89 €/mes",
         priceFounder: "79 €/mes",
         priceNote:
-          "Precio exclusivo antes de la apertura. Mantén tu tarifa de Socio Fundador y disfruta de:",
-        benefits: [
-          "Acceso a los 2 centros Premier Gym.",
-          "Sin matrícula.",
-          "Sin permanencia.",
-        ],
+          "Condiciones exclusivas de apertura. Una vez completadas las 200 plazas, esta tarifa dejará de estar disponible.",
+        benefits: ["Sin matrícula.", "Sin permanencia."],
         ctaLabel: "Hazte Socio Fundador",
       },
     },
