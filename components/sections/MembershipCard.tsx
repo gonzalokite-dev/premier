@@ -16,12 +16,23 @@ export default function MembershipCard({
   const signupHref = club.slug === "sescorxador" ? SIGNUP_URL_SESCORXADOR : whatsappHref(message);
 
   return (
-    <div className="relative flex h-full flex-col border border-gray-300 p-8 sm:p-10">
-      {membership.highlight && (
-        <span className="absolute right-8 top-8 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-accent">
-          {membership.highlight}
-        </span>
-      )}
+    <div
+      className={`flex h-full flex-col border p-8 sm:p-10 ${
+        membership.highlight ? "border-black bg-sand-50" : "border-gray-300"
+      }`}
+    >
+      {/* El distintivo va en el flujo, nunca superpuesto: en móvil el título
+          ocupa dos líneas y antes se solapaba. La tarjeta sin distintivo
+          reserva el mismo hueco a partir de lg para que ambos títulos queden
+          alineados en la vista de dos columnas. */}
+      <span
+        aria-hidden={!membership.highlight}
+        className={`mb-6 inline-flex self-start px-4 py-2 text-[0.65rem] font-medium uppercase tracking-[0.2em] ${
+          membership.highlight ? "bg-black text-white" : "invisible max-lg:hidden"
+        }`}
+      >
+        {membership.highlight ?? "—"}
+      </span>
       <Heading as="h3" size="md">
         {membership.title}
       </Heading>
