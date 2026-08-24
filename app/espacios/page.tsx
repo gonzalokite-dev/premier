@@ -13,7 +13,7 @@ import { breadcrumbJsonLd, ogImageUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Espacios",
   description:
-    "Descubre las zonas de Premier Gym: EGYM, Cardio, Máquinas y Discos, Peso Libre, vestuarios y la exclusiva Recovery Zone en Palma de Mallorca.",
+    "Descubre las zonas de Premier Gym: EGYM, Cardio, Máquinas y Peso Libre, vestuarios y la exclusiva Recovery Zone en Palma de Mallorca.",
   alternates: { canonical: "/espacios" },
   openGraph: { images: [{ url: ogImageUrl("Espacios"), width: 1200, height: 630 }] },
   twitter: { images: [ogImageUrl("Espacios")] },
@@ -44,7 +44,7 @@ export default function EspaciosPage() {
       {SPACES.map((space, i) => (
         <Fragment key={space.slug}>
           <ZoneSection space={space} reverse={i % 2 === 1} />
-          {space.slug === "peso-libre" && <MachineBrandsRow />}
+          {space.slug === "maquinas-y-peso-libre" && <MachineBrandsRow />}
         </Fragment>
       ))}
 

@@ -85,7 +85,7 @@ export const CLUBS: Record<ClubSlug, Club> = {
     heroImageAlt: "Interior de Premier Gym Avenidas, gimnasio premium en Palma de Mallorca",
     heroImagePlaceholder: "{{TBD: fotografía Avenidas}}",
     introImage: null,
-    tileImage: null,
+    tileImage: "/assets/images/avenidas/hero.jpg",
     intro: [
       "Premier Gym Avenidas es un gimnasio en Palma de Mallorca, donde entrenar con tranquilidad, tecnología y un servicio personalizado. Premier Gym Avenidas es la elección perfecta.",
       "Nuestro nuevo club nace para ofrecer una experiencia de entrenamiento premium en una de las zonas mejor comunicadas de Palma. Un espacio más amplio, con nuevas zonas de entrenamiento, tecnología de última generación y servicios orientados tanto al rendimiento como al bienestar.",
