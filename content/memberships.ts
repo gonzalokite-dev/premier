@@ -62,7 +62,7 @@ export const MEMBERSHIPS: Record<ClubSlug, Membership[]> = {
         "Mejor precio por mes.",
       ],
       price: "190 € / trimestre",
-      highlight: "Mejor precio por mes",
+      highlight: "Mejor precio: 63,33 € / mes",
     },
   ],
   avenidas: [
@@ -93,7 +93,7 @@ export const MEMBERSHIPS: Record<ClubSlug, Membership[]> = {
         "Mejor precio por mes.",
       ],
       price: "{{TBD: precio trimestral Avenidas}}",
-      highlight: "Mejor precio por mes",
+      highlight: "Mejor precio: {{TBD: equivalencia mensual Avenidas}}",
     },
   ],
 };
@@ -101,7 +101,7 @@ export const MEMBERSHIPS: Record<ClubSlug, Membership[]> = {
 export const TEMPORARY_PASSES: Record<ClubSlug, TemporaryPass[]> = {
   sescorxador: [
     { id: "day", price: 20, ...TEMP_PASS_COPY.day },
-    { id: "bono5", price: 30, ...TEMP_PASS_COPY.bono5 },
+    { id: "bono5", price: 50, ...TEMP_PASS_COPY.bono5 },
     { id: "week", price: 35, ...TEMP_PASS_COPY.week },
     { id: "15day", price: 50, ...TEMP_PASS_COPY["15day"] },
   ],
